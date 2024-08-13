@@ -1,3 +1,5 @@
+import StoreProvider from "../store-provider";
+
 export default function DashboardLayout({
   children,
   sidebar,
@@ -9,15 +11,17 @@ export default function DashboardLayout({
 }>) {
   return (
     <>
-        <div>{children}</div>
-        <div className="flex">
-            <div className="w-1/5 flex flex-col gap-5 px-5 py-3">
-                {sidebar}
+        <StoreProvider>
+            <div>{children}</div>
+            <div className="flex mx-10">
+                <div className="w-1/4 flex flex-col gap-5 px-5 py-3">
+                    {sidebar}
+                </div>
+                <div className="flex-1 py-5 px-5">
+                    {products}
+                </div>
             </div>
-            <div className="bg-red-300 flex-1">
-                {products}
-            </div>
-        </div>
+        </StoreProvider>
     </>
   );
 }
