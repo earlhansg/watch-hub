@@ -1,0 +1,256 @@
+{
+  "products": [
+    {
+        "id": 1,
+        "title": "Product Alpha 1",
+        "description": "Affordable Item 1",
+        "price": 155.91,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+1",
+        "rating": 4.0
+    },
+    {
+        "id": 2,
+        "title": "Product Alpha 2",
+        "description": "Ergonomic Item 2",
+        "price": 144.25,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+2",
+        "rating": 1.8
+    },
+    {
+        "id": 3,
+        "title": "Product Gamma 3",
+        "description": "Lightweight Item 3",
+        "price": 146.2,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+3",
+        "rating": 3.2
+    },
+    {
+        "id": 4,
+        "title": "Product Delta 4",
+        "description": "Affordable Item 4",
+        "price": 105.74,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+4",
+        "rating": 4.3
+    },
+    {
+        "id": 5,
+        "title": "Product Epsilon 5",
+        "description": "High-quality Item 5",
+        "price": 196.76,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+5",
+        "rating": 2.7
+    },
+    {
+        "id": 6,
+        "title": "Product Gamma 6",
+        "description": "High-quality Item 6",
+        "price": 11.98,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+6",
+        "rating": 3.4
+    },
+    {
+        "id": 7,
+        "title": "Product Beta 7",
+        "description": "Ergonomic Item 7",
+        "price": 131.88,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+7",
+        "rating": 4.0
+    },
+    {
+        "id": 8,
+        "title": "Product Epsilon 8",
+        "description": "Lightweight Item 8",
+        "price": 148.26,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+8",
+        "rating": 2.7
+    },
+    {
+        "id": 9,
+        "title": "Product Beta 9",
+        "description": "Compact Item 9",
+        "price": 139.16,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+9",
+        "rating": 2.2
+    },
+    {
+        "id": 10,
+        "title": "Product Delta 10",
+        "description": "Ergonomic Item 10",
+        "price": 67.06,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+10",
+        "rating": 2.9
+    },
+    {
+        "id": 11,
+        "title": "Product Epsilon 11",
+        "description": "Durable Item 11",
+        "price": 116.5,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+11",
+        "rating": 2.5
+    },
+    {
+        "id": 12,
+        "title": "Product Alpha 12",
+        "description": "Ergonomic Item 12",
+        "price": 158.66,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+12",
+        "rating": 4.7
+    },
+    {
+        "id": 13,
+        "title": "Product Gamma 13",
+        "description": "Ergonomic Item 13",
+        "price": 46.99,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+13",
+        "rating": 3.4
+    },
+    {
+        "id": 14,
+        "title": "Product Delta 14",
+        "description": "High-quality Item 14",
+        "price": 90.0,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+14",
+        "rating": 3.7
+    },
+    {
+        "id": 15,
+        "title": "Product Gamma 15",
+        "description": "Affordable Item 15",
+        "price": 101.1,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+15",
+        "rating": 4.5
+    },
+    {
+        "id": 16,
+        "title": "Product Alpha 16",
+        "description": "Affordable Item 16",
+        "price": 67.06,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+16",
+        "rating": 2.1
+    },
+    {
+        "id": 17,
+        "title": "Product Epsilon 17",
+        "description": "Durable Item 17",
+        "price": 46.62,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+17",
+        "rating": 4.6
+    },
+    {
+        "id": 18,
+        "title": "Product Gamma 18",
+        "description": "Compact Item 18",
+        "price": 16.66,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+18",
+        "rating": 2.8
+    },
+    {
+        "id": 19,
+        "title": "Product Beta 19",
+        "description": "Affordable Item 19",
+        "price": 118.83,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+19",
+        "rating": 3.2
+    },
+    {
+        "id": 20,
+        "title": "Product Delta 20",
+        "description": "Lightweight Item 20",
+        "price": 196.39,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+20",
+        "rating": 4.3
+    },
+    {
+        "id": 21,
+        "title": "Product Epsilon 21",
+        "description": "Compact Item 21",
+        "price": 188.16,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+21",
+        "rating": 1.1
+    },
+    {
+        "id": 22,
+        "title": "Product Gamma 22",
+        "description": "Affordable Item 22",
+        "price": 56.66,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+22",
+        "rating": 2.3
+    },
+    {
+        "id": 23,
+        "title": "Product Delta 23",
+        "description": "Ergonomic Item 23",
+        "price": 80.06,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+23",
+        "rating": 1.8
+    },
+    {
+        "id": 24,
+        "title": "Product Alpha 24",
+        "description": "Durable Item 24",
+        "price": 12.72,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+24",
+        "rating": 4.0
+    },
+    {
+        "id": 25,
+        "title": "Product Epsilon 25",
+        "description": "Lightweight Item 25",
+        "price": 119.45,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+25",
+        "rating": 2.5
+    },
+    {
+        "id": 26,
+        "title": "Product Beta 26",
+        "description": "High-quality Item 26",
+        "price": 158.91,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+26",
+        "rating": 3.5
+    },
+    {
+        "id": 27,
+        "title": "Product Beta 27",
+        "description": "High-quality Item 27",
+        "price": 194.36,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+27",
+        "rating": 2.9
+    },
+    {
+        "id": 28,
+        "title": "Product Alpha 28",
+        "description": "Lightweight Item 28",
+        "price": 72.75,
+        "currency": "USD",
+        "image": "https://via.placeholder.com/200?text=Product+28",
+        "rating": 3.8
+    }
+  ]
+}
