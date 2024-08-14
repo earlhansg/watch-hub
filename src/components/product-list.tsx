@@ -3,14 +3,19 @@
 import { Product } from "@/app/_utils/types/product";
 import Image from "next/image";
 import productImg from "@/assets/images/watch-1.png";
-import { useAppSelector } from "@/lib/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { RootState } from "@/lib/store";
+import { addCart } from "@/lib/features/cartSlice";
+import Rating from "@mui/material/Rating";
 
 type ProductListProp = {
   product: Product;
 };
 
 const ProductList = ({ product }: ProductListProp) => {
+  const dispatch = useAppDispatch();
 
   return (
     <>
@@ -19,18 +24,25 @@ const ProductList = ({ product }: ProductListProp) => {
           <Image
             src={productImg}
             alt="Product Image"
-            // className="group-hover/item:w-[100px] w-[150px]"
-            className="group-hover/item:w-[100px] xl:w-[150px] w-[120px]"
+            className="group-hover/item:w-[110px] xl:w-[150px] w-[120px]"
           />
         </section>
         <section className="flex flex-col text-center text=[#3e3f42]">
-          {/* <h1 className="uppercase font-medium tracking-[3px] text-[#3e3f42]">{product.title}</h1> */}
-          <h1 className="uppercase font-medium xl:tracking-[3px] tracking-[1px] text-[#3e3f42]">{product.title}</h1>
-          <p className="text-sm mt-1 font-medium text-[#7f7f80]">${product.price}</p>
+          <h1 className="uppercase font-medium xl:tracking-[3px] tracking-[1px] text-[#3e3f42]">
+            {product.title}
+          </h1>
+          <p className="text-sm mt-1 font-medium text-[#7f7f80]">
+            ${product.price}
+          </p>
         </section>
         <section className="hidden group-hover/item:flex flex-col justify-center gap-2 px-20 mt-2">
-          <button className="border-2 py-3">Details</button>
-          <button className="uppercase bg-[#3e3f42] py-3 text-white">
+          <div className="flex justify-center">
+            <Rating name="product star" value={product.rating} readOnly />
+          </div>
+          <button
+            className="uppercase bg-[#3e3f42] py-3 text-white"
+            onClick={() => dispatch(addCart(product))}
+          >
             Add to Cart
           </button>
         </section>
