@@ -21,7 +21,21 @@ export const selectFilteredProducts = createSelector(
     });
     // Sort products based on the selected sorting criteria
     const sortedProducts = filteredProducts.sort((a, b) => {
-        return rateSort === 'asc' ? a.rating - b.rating : b.rating - a.rating && priceSort === 'asc' ? a.price - b.price : b.price - a.price;
+      if (rateSort) {
+        if (rateSort === 'asc') {
+          return a.rating - b.rating;
+        } else {
+          return b.rating - a.rating;
+        }
+      }
+      if (priceSort) {
+        if (priceSort === 'asc') {
+          return a.price - b.price;
+        } else {
+          return b.price - a.price;
+        }
+      }
+      return 0; // No sorting applied
     });
     return sortedProducts;
   }
