@@ -5,98 +5,51 @@ import product from '@/assets/images/watch-1.png'
 import { useEffect, useState } from 'react';
 import { Product } from '@/app/_utils/types/product';
 import ProductList from '@/components/product-list';
+import { useAppDispatch, useAppSelector } from '@/lib/hooks';
+import { setProduct } from '@/lib/features/productSlice';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 
 export default function Products() {
-    const [products, setProducts] = useState<Product[]>([])
-    const fetchProducts = async () => {
-		try {
-			const response = await fetch('http://localhost:3000/api/products', {
-                method: 'GET',
-            });
-			if (response.ok) {
-				const { products } = await response.json();
-				setProducts(products);
-			}
-            // console.log('response', response)
-		} catch (error) {
-			console.error(error);
-		}
-	};
+    const products = useAppSelector((state) => state.product.value);
+    const dispatch = useAppDispatch();
+    const [loading, setLoading] = useState(false);
+    
+    const fetchProducts = async (start = 0, end = 8) => {
+      setLoading(true);
+      try {
+          const response = await fetch(`http://localhost:3000/api/products?_start=${start}&_end=${end}`, {
+              method: "GET",
+          });
+          if (response.ok) {
+              const { products } = await response.json();
+              // setProducts(products);
+              dispatch(setProduct(products))
+              setLoading(false);
+          }
+      } catch (error) {
+          console.error(error);
+      }
+  };
+  
 	useEffect(() => {
 		fetchProducts();
 	}, []);
+
     return (
       <>
-        <div className="w-full grid grid-cols-4 mt-[3.8rem] gap-y-5 gap-x-[1rem]">
-            {products.map((product) => (
-                <ProductList key={product.id} product={product}/>
-            ))}
-          {/* <div className="bg-[#f3f2f0] flex flex-col hover:gap-2 gap-5 hover:py-5 py-10 group/item hover:drop-shadow-md h-[400px] hover:h-[auto]">
-            <section className='flex justify-center'>
-                <Image src={product} alt="Product Image" className='group-hover/item:w-[100px] w-[150px]'/>
-            </section>
-            <section className='flex flex-col text-center text=[#3e3f42]'>
-              <h1 className='uppercase font-medium tracking-[3px]'>slate</h1>
-              <p className='text-sm mt-1 font-medium'>$800</p>
-            </section>
-            <section className='hidden group-hover/item:flex flex-col justify-center gap-2 px-20 mt-2'>
-                <button className='border-2 py-3'>Details</button>
-                <button className='uppercase bg-[#3e3f42] py-3 text-white'>Add to Cart</button>
-            </section>
-          </div>
-          <div className="bg-[#f3f2f0] flex flex-col hover:gap-2 gap-5 hover:py-5 py-10 group/item hover:drop-shadow-md h-[400px] hover:h-[auto]">
-            <section className='flex justify-center'>
-                <Image src={product} alt="Product Image" className='group-hover/item:w-[100px] w-[150px]'/>
-            </section>
-            <section className='flex flex-col text-center text=[#3e3f42]'>
-              <h1 className='uppercase font-medium tracking-[3px]'>slate</h1>
-              <p className='text-sm mt-1 font-medium'>$800</p>
-            </section>
-            <section className='hidden group-hover/item:flex flex-col justify-center gap-2 px-20 mt-2'>
-                <button className='border-2 py-3'>Details</button>
-                <button className='uppercase bg-[#3e3f42] py-3 text-white'>Add to Cart</button>
-            </section>
-          </div>
-          <div className="bg-[#f3f2f0] flex flex-col hover:gap-2 gap-5 hover:py-5 py-10 group/item hover:drop-shadow-md h-[400px] hover:h-[auto]">
-            <section className='flex justify-center'>
-                <Image src={product} alt="Product Image" className='group-hover/item:w-[100px] w-[150px]'/>
-            </section>
-            <section className='flex flex-col text-center text=[#3e3f42]'>
-              <h1 className='uppercase font-medium tracking-[3px]'>slate</h1>
-              <p className='text-sm mt-1 font-medium'>$800</p>
-            </section>
-            <section className='hidden group-hover/item:flex flex-col justify-center gap-2 px-20 mt-2'>
-                <button className='border-2 py-3'>Details</button>
-                <button className='uppercase bg-[#3e3f42] py-3 text-white'>Add to Cart</button>
-            </section>
-          </div>
-          <div className="bg-[#f3f2f0] flex flex-col hover:gap-2 gap-5 hover:py-5 py-10 group/item hover:drop-shadow-md h-[400px] hover:h-[auto]">
-            <section className='flex justify-center'>
-                <Image src={product} alt="Product Image" className='group-hover/item:w-[100px] w-[150px]'/>
-            </section>
-            <section className='flex flex-col text-center text=[#3e3f42]'>
-              <h1 className='uppercase font-medium tracking-[3px]'>slate</h1>
-              <p className='text-sm mt-1 font-medium'>$800</p>
-            </section>
-            <section className='hidden group-hover/item:flex flex-col justify-center gap-2 px-20 mt-2'>
-                <button className='border-2 py-3'>Details</button>
-                <button className='uppercase bg-[#3e3f42] py-3 text-white'>Add to Cart</button>
-            </section>
-          </div>
-          <div className="bg-[#f3f2f0] flex flex-col hover:gap-2 gap-5 hover:py-5 py-10 group/item hover:drop-shadow-md h-[400px] hover:h-[auto]">
-            <section className='flex justify-center'>
-                <Image src={product} alt="Product Image" className='group-hover/item:w-[100px] w-[150px]'/>
-            </section>
-            <section className='flex flex-col text-center text=[#3e3f42]'>
-              <h1 className='uppercase font-medium tracking-[3px]'>slate</h1>
-              <p className='text-sm mt-1 font-medium'>$800</p>
-            </section>
-            <section className='hidden group-hover/item:flex flex-col justify-center gap-2 px-20 mt-2'>
-                <button className='border-2 py-3'>Details</button>
-                <button className='uppercase bg-[#3e3f42] py-3 text-white'>Add to Cart</button>
-            </section>
-          </div> */}
+        {/* <div className="w-full grid grid-cols-4 mt-[3.8rem] gap-y-5 gap-x-[1rem]"> */}
+        <div className="w-full grid grid-cols-1 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 mt-[3.8rem] gap-y-5 gap-x-[1rem]">
+            {loading ? (
+              <CircularProgress size={70}/>
+            ) : (
+              <>
+                {products.map((product) => (
+                  <ProductList key={product.id} product={product}/>
+                ))}
+              </>
+            )}
         </div>
       </>
     );

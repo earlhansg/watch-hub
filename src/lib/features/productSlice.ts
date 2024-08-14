@@ -6,17 +6,7 @@ interface ProductState {
 }
 
 const initialState: ProductState = {
-  value: [
-    {
-      id: 26,
-      title: "Product Beta 26",
-      description: "High-quality Item 26",
-      price: 158.91,
-      currency: "USD",
-      image: "https://via.placeholder.com/200?text=Product+26",
-      rating: 3.5,
-    }
-  ],
+  value: [],
 };
 
 const productSlice = createSlice({
@@ -26,9 +16,15 @@ const productSlice = createSlice({
     setProduct: (state, action: PayloadAction<Product[]>) => {
       state.value = action.payload;
     },
+    addProduct: (state, action: PayloadAction<Product[]>) => {
+      state.value = [...state.value, ...action.payload];
+    },
+    resetProduct: (state) => {
+      state.value = [];
+    }
   },
 });
 
-export const { setProduct } = productSlice.actions;
+export const { setProduct, addProduct, resetProduct } = productSlice.actions;
 
 export default productSlice.reducer;
