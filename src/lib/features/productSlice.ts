@@ -1,4 +1,6 @@
+// redux 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+// type 
 import { Product } from '@/app/_utils/types/product';
 
 type ProductState = {
