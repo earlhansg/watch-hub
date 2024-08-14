@@ -1,19 +1,27 @@
 'use client'
-import { addProduct } from '@/lib/features/productSlice';
-import { useAppDispatch, useAppSelector } from '@/lib/hooks';
-import AddIcon from '@mui/icons-material/Add';
+
+// hook
 import { useState } from 'react';
-import CircularProgress from '@mui/material/CircularProgress';
-import { useSelector } from 'react-redux';
+// libs
+import { addProduct } from '@/lib/features/productSlice';
+import { useAppDispatch } from '@/lib/hooks';
 import { RootState } from '@/lib/store';
 import { selectFilteredProducts } from '@/lib/features/selector';
+// mui
+import AddIcon from '@mui/icons-material/Add';
+import CircularProgress from '@mui/material/CircularProgress';
+import { useSelector } from 'react-redux';
 
 const LoadMore = () => {
+  // hooks 
   const filteredProducts = useSelector((state: RootState) => selectFilteredProducts(state));
   const searchTerm = useSelector((state: RootState) => state.product.searchTerm);
   const rating = useSelector((state: RootState) => state.product.rating);
   const dispatch = useAppDispatch();
+  // state 
   const [loading, setLoading] = useState(false);
+
+  // this api was design to add data in products state when More is click 
   const fetchMoreProducts = async () => {
     setLoading(true)
     const start = filteredProducts.length;
@@ -38,7 +46,7 @@ const LoadMore = () => {
   return (
     <>
       {(searchTerm === '' && !rating) && (
-        <div className="flex justify-center py-5">
+        <div className="flex justify-center py-5 md:mb-0 mb-2">
           <button
             className="bg-[#f3f2f0] w-full py-4 flex gap-2 justify-center"
             onClick={() => fetchMoreProducts()}

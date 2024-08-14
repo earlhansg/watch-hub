@@ -1,6 +1,8 @@
 'use client'
+// hooks
 import { useRef } from 'react'
 import { Provider } from 'react-redux'
+// lib
 import { makeStore, AppStore } from '../lib/store'
 
 export default function StoreProvider({

@@ -1,19 +1,24 @@
-"use client"
+"use client";
 
+// libs
 import { setSearchTerm } from "@/lib/features/productSlice";
 import { useAppDispatch } from "@/lib/hooks";
 import { RootState } from "@/lib/store";
-import { useState } from "react"
+// hook
 import { useSelector } from "react-redux";
 
 const Search = () => {
+  // hooks
   const dispatch = useAppDispatch();
-  const searchTerm = useSelector((state: RootState) => state.product.searchTerm);
+  const searchTerm = useSelector(
+    (state: RootState) => state.product.searchTerm
+  );
 
+  // method for search by keywords
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setSearchTerm(e.target.value));
   };
-  
+
   return (
     <div>
       <input
@@ -25,6 +30,6 @@ const Search = () => {
       />
     </div>
   );
-}
+};
 
-export default Search
+export default Search;

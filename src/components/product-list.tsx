@@ -1,13 +1,14 @@
 "use client";
 
-import { Product } from "@/app/_utils/types/product";
 import Image from "next/image";
+// type
+import { Product } from "@/app/_utils/types/product";
+// asset
 import productImg from "@/assets/images/watch-1.png";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { RootState } from "@/lib/store";
+// libs
+import { useAppDispatch } from "@/lib/hooks";
 import { addCart } from "@/lib/features/cartSlice";
+// mui
 import Rating from "@mui/material/Rating";
 
 type ProductListProp = {
