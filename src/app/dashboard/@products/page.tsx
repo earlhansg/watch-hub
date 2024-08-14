@@ -8,14 +8,17 @@ import ProductList from '@/components/product-list';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { setProduct } from '@/lib/features/productSlice';
 import CircularProgress from '@mui/material/CircularProgress';
-
+import { RootState } from '@/lib/store';
+import { useSelector } from 'react-redux';
+import { selectFilteredProducts } from '@/lib/features/selector';
 
 
 export default function Products() {
-    const products = useAppSelector((state) => state.product.value);
+    // const products = useAppSelector((state) => state.product.value);
+    const filteredProducts = useSelector((state: RootState) => selectFilteredProducts(state));
     const dispatch = useAppDispatch();
     const [loading, setLoading] = useState(false);
-    
+
     const fetchProducts = async (start = 0, end = 8) => {
       setLoading(true);
       try {
@@ -45,7 +48,10 @@ export default function Products() {
               <CircularProgress size={70}/>
             ) : (
               <>
-                {products.map((product) => (
+                {/* {products.map((product) => (
+                  <ProductList key={product.id} product={product}/>
+                ))} */}
+                {filteredProducts.map((product) => (
                   <ProductList key={product.id} product={product}/>
                 ))}
               </>

@@ -1,12 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Product } from '@/app/_utils/types/product';
 
-interface ProductState {
-  value: Product[];
+type ProductState = {
+  products: Product[];
+  searchTerm: string;
 }
 
 const initialState: ProductState = {
-  value: [],
+  products: [],
+  searchTerm: ''
 };
 
 const productSlice = createSlice({
@@ -14,17 +16,20 @@ const productSlice = createSlice({
   initialState,
   reducers: {
     setProduct: (state, action: PayloadAction<Product[]>) => {
-      state.value = action.payload;
+      state.products = action.payload;
     },
     addProduct: (state, action: PayloadAction<Product[]>) => {
-      state.value = [...state.value, ...action.payload];
+      state.products = [...state.products, ...action.payload];
     },
     resetProduct: (state) => {
-      state.value = [];
-    }
+      state.products = [];
+    },
+    setSearchTerm: (state, action: PayloadAction<string>) => {
+      state.searchTerm = action.payload;
+    },
   },
 });
 
-export const { setProduct, addProduct, resetProduct } = productSlice.actions;
+export const { setProduct, addProduct, resetProduct, setSearchTerm } = productSlice.actions;
 
 export default productSlice.reducer;

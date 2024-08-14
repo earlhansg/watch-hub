@@ -4,15 +4,18 @@ import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import AddIcon from '@mui/icons-material/Add';
 import { useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/lib/store';
+import { selectFilteredProducts } from '@/lib/features/selector';
 
 const LoadMore = () => {
-  const products = useAppSelector((state) => state.product.value);
+  const filteredProducts = useSelector((state: RootState) => selectFilteredProducts(state));
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(false);
   const fetchMoreProducts = async () => {
     setLoading(true)
-    const start = products.length;
-    const end = products.length + 8;
+    const start = filteredProducts.length;
+    const end = filteredProducts.length + 8;
     // Adding a 2-second delay
     await new Promise(resolve => setTimeout(resolve, 2000));
     try {

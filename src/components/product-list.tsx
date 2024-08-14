@@ -11,11 +11,6 @@ type ProductListProp = {
 };
 
 const ProductList = ({ product }: ProductListProp) => {
-  const data = useAppSelector((state) => state.product.value);
-
-  useEffect(() => {
-    console.log('data', data)
-  }, [data])
 
   return (
     <>
