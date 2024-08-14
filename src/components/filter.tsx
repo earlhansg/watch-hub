@@ -1,20 +1,28 @@
 "use client";
 
+import { setRating } from "@/lib/features/productSlice";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { RootState } from "@/lib/store";
 import Rating from "@mui/material/Rating";
 import Slider from "@mui/material/Slider";
 import { useState } from "react";
 
-function valuetext(value: number) {
-  return `${value}°C`;
-}
-
 const Filter = () => {
+  const dispatch = useAppDispatch();
+  const searchTerm = useAppSelector((state: RootState) => state.product.searchTerm);
+
   const [rateValue, setRateValue] = useState<number | null>(3);
   const [priceRangevalue, setPriceRangeValue] = useState<number[]>([20, 37]);
 
   const handleChange = (event: Event, newValue: number | number[]) => {
+    console.log('newValue', newValue)
     setPriceRangeValue(newValue as number[]);
   };
+
+  const handleRateChange = (newValue: number | null) => {
+    dispatch(setRating(newValue));
+    setRateValue(newValue);
+  }
   return (
     <div className="bg-[#3e3f42] flex flex-col gap-20 text-white py-10 px-5">
       <section className="flex flex-col gap-10">
@@ -35,9 +43,10 @@ const Filter = () => {
               <Rating
                 name="simple-controlled"
                 value={rateValue}
-                onChange={(event, newValue) => {
-                  setRateValue(newValue);
-                }}
+                // onChange={(event, newValue) => {
+                //   setRateValue(newValue);
+                // }}
+                onChange={(event, newValue) => handleRateChange(newValue)}
               />
             </div>
           </li>
@@ -48,7 +57,6 @@ const Filter = () => {
               value={priceRangevalue}
               onChange={handleChange}
               valueLabelDisplay="on"
-              // getAriaValueText={valuetext}
             />
           </div>
         </ul>
