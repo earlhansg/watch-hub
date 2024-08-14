@@ -5,12 +5,16 @@ type ProductState = {
   products: Product[];
   searchTerm: string;
   rating: number | null;
+  rateSort: 'asc' | 'desc';
+  priceSort: 'asc' | 'desc';
 }
 
 const initialState: ProductState = {
   products: [],
   searchTerm: '',
-  rating: null
+  rating: null,
+  rateSort: 'desc',
+  priceSort: 'desc'
 };
 
 const productSlice = createSlice({
@@ -31,10 +35,16 @@ const productSlice = createSlice({
     },
     setRating(state, action: PayloadAction<number | null>) {
       state.rating = action.payload;
+    },
+    setSortRate(state, action: PayloadAction<'asc' | 'desc'>) {
+      state.rateSort = action.payload;
+    },
+    setSortPrice(state, action: PayloadAction<'asc' | 'desc'>) {
+      state.priceSort = action.payload;
     }
   },
 });
 
-export const { setProduct, addProduct, resetProduct, setSearchTerm, setRating } = productSlice.actions;
+export const { setProduct, addProduct, resetProduct, setSearchTerm, setRating, setSortRate, setSortPrice } = productSlice.actions;
 
 export default productSlice.reducer;

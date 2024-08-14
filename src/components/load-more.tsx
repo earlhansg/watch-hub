@@ -10,6 +10,8 @@ import { selectFilteredProducts } from '@/lib/features/selector';
 
 const LoadMore = () => {
   const filteredProducts = useSelector((state: RootState) => selectFilteredProducts(state));
+  const searchTerm = useSelector((state: RootState) => state.product.searchTerm);
+  const rating = useSelector((state: RootState) => state.product.rating);
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(false);
   const fetchMoreProducts = async () => {
@@ -34,16 +36,23 @@ const LoadMore = () => {
   }
 
   return (
-    <div className="flex justify-center py-5">
-      <button className="bg-[#f3f2f0] w-full py-4 flex gap-2 justify-center" onClick={() => fetchMoreProducts()}>
-        <span className='uppercase tracking-[2px] '>More</span>
-        {loading ? (
-            <CircularProgress size={15} sx={{alignSelf: 'center'}}/> 
-        ) : (
-            <AddIcon sx={{ fontSize: "15px", alignSelf: 'center' }} />  
-        )}
-      </button>
-    </div>
+    <>
+      {(searchTerm === '' && !rating) && (
+        <div className="flex justify-center py-5">
+          <button
+            className="bg-[#f3f2f0] w-full py-4 flex gap-2 justify-center"
+            onClick={() => fetchMoreProducts()}
+          >
+            <span className="uppercase tracking-[2px] ">More</span>
+            {loading ? (
+              <CircularProgress size={15} sx={{ alignSelf: "center" }} />
+            ) : (
+              <AddIcon sx={{ fontSize: "15px", alignSelf: "center" }} />
+            )}
+          </button>
+        </div>
+      )}
+    </>
   );
 };
 
